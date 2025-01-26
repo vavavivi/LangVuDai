@@ -5,16 +5,123 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Trò truyện cùng lão hạc Gen AI Chatbot</title>
     <style>
-        body { font-family: Arial, sans-serif; display: flex; justify-content: center; align-items: center; height: 100vh; background-color: #f4f4f4; margin: 0; }
-        .chat-container { max-width: 600px; width: 100%; border: 1px solid #ddd; padding: 20px; border-radius: 8px; background-color: #fff; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); }
-        .chat-box { height: 400px; overflow-y: auto; padding: 10px; border: 1px solid #eaeaea; margin-bottom: 15px; }
-        .user-msg, .bot-msg { margin-bottom: 10px; padding: 8px; border-radius: 4px; }
-        .user-msg { background-color: #d4f0fc; text-align: right; }
-        .bot-msg { background-color: #f0f0f0; text-align: left; }
-        .input-box { display: flex; }
-        input[type="text"] { flex-grow: 1; padding: 10px; border: 1px solid #ddd; border-radius: 4px; }
-        button { padding: 10px; border: none; background-color: #007bff; color: #fff; border-radius: 4px; cursor: pointer; }
-        .back-btn { background-color: #ccc; margin-bottom: 10px; }
+       /* Cải thiện giao diện cho tất cả các màn hình */
+body {
+    font-family: Arial, sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: #f4f4f4;
+    margin: 0;
+    padding: 0;
+}
+
+.chat-container {
+    max-width: 600px;
+    width: 100%;
+    border: 1px solid #ddd;
+    padding: 20px;
+    border-radius: 8px;
+    background-color: #fff;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Điều chỉnh chiều cao và cuộn cho chat-box */
+.chat-box {
+    height: 400px;
+    overflow-y: auto;
+    padding: 10px;
+    border: 1px solid #eaeaea;
+    margin-bottom: 15px;
+}
+
+/* Các lớp tin nhắn người dùng và bot */
+.user-msg, .bot-msg {
+    margin-bottom: 10px;
+    padding: 8px;
+    border-radius: 4px;
+}
+
+.user-msg {
+    background-color: #d4f0fc;
+    text-align: right;
+}
+
+.bot-msg {
+    background-color: #f0f0f0;
+    text-align: left;
+}
+
+/* Phần input box và button */
+.input-box {
+    display: flex;
+    flex-direction: column; /* Đảm bảo cho nút và input box xếp chồng khi màn hình nhỏ */
+}
+
+input[type="text"] {
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    margin-bottom: 10px; /* Tạo khoảng cách giữa input và nút */
+    width: 100%; /* Đảm bảo chiều rộng input box là 100% */
+}
+
+button {
+    padding: 10px;
+    border: none;
+    background-color: #007bff;
+    color: #fff;
+    border-radius: 4px;
+    cursor: pointer;
+    width: 100%; /* Đảm bảo nút chiếm toàn bộ chiều rộng */
+}
+
+/* Chỉnh sửa kiểu cho nút quay lại */
+.back-btn {
+    background-color: #ccc;
+    margin-bottom: 10px;
+    width: 100%; /* Đảm bảo nút quay lại chiếm toàn bộ chiều rộng */
+    padding: 12px;
+    border-radius: 4px;
+    cursor: pointer;
+    text-align: center;
+}
+
+/* Media Queries cho thiết bị di động */
+@media only screen and (max-width: 768px) {
+    .chat-container {
+        padding: 10px;
+    }
+
+    .chat-box {
+        height: 300px; /* Điều chỉnh chiều cao của chat-box */
+    }
+
+    .input-box {
+        flex-direction: column; /* Đảm bảo input và nút gửi xếp chồng */
+    }
+
+    input[type="text"] {
+        margin-bottom: 10px; /* Thêm khoảng cách giữa input và nút */
+    }
+
+    button {
+        width: 100%; /* Đảm bảo nút gửi rộng bằng chiều rộng màn hình */
+    }
+
+    .back-btn {
+        width: 100%; /* Nút quay lại cũng chiếm toàn bộ chiều rộng */
+    }
+}
+
+/* Media Queries cho các thiết bị cực nhỏ */
+@media only screen and (max-width: 480px) {
+    .chat-container {
+        width: 100%; /* Đảm bảo container chiếm toàn bộ màn hình nhỏ */
+    }
+}
+
     </style>
 </head>
 <body>
