@@ -1,107 +1,54 @@
-* {
-    box-sizing: border-box;
-    margin: 0;
-    padding: 0;
+
+/* Tối ưu hóa cho màn hình di động */
+@media only screen and (max-width: 768px) {
+    .slider-container {
+        display: flex;
+        flex-direction: column; /* Hiển thị theo chiều dọc trên di động */
+        align-items: center;
+    }
+
+    .card {
+        width: 90%; /* Đảm bảo các thẻ thẻ có chiều rộng phù hợp với màn hình */
+        margin: 10px 0;
+        text-align: center;
+    }
+
+    .card img {
+        width: 100%; /* Đảm bảo ảnh không vượt ra ngoài */
+        height: auto;
+    }
+
+    .arrow-button {
+        display: none; /* Ẩn các nút điều hướng trên di động */
+    }
+
+    /* Modal */
+    .modal-content {
+        width: 100%;
+        max-width: 600px; /* Đảm bảo modal không quá rộng */
+        margin: auto;
+    }
 }
 
-body {
-    font-family: Arial, sans-serif;
-    background-color: #f0f3f5;
-    color: #333;
-    padding: 20px;
-    text-align: center;
-}
+/* Điều chỉnh slider cho màn hình lớn */
+@media only screen and (min-width: 769px) {
+    .slider-container {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+    }
 
-header {
-    margin-bottom: 20px;
-}
+    .card {
+        width: 30%;
+        margin: 0 10px;
+    }
 
-.character-slider {
-    overflow: hidden;
-    display: flex;
-    justify-content: center;
-    margin-top: 20px;
-    position: relative;
-}
+    .card img {
+        width: 100%;
+        height: auto;
+    }
 
-.slider-container {
-    display: flex;
-    gap: 20px;
-    transition: transform 0.5s ease;
-}
-
-.card {
-    background-color: #fff;
-    border: 1px solid #ddd;
-    border-radius: 10px;
-    padding: 20px;
-    width: 200px;
-    cursor: pointer;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-    text-align: center;
-}
-
-.card:hover {
-    transform: scale(1.05);
-    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
-}
-
-.card img {
-    width: 100px;
-    height: 100px;
-    border-radius: 50%;
-    margin-bottom: 15px;
-}
-
-.modal {
-    display: none;
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(0, 0, 0, 0.5);
-    justify-content: center;
-    align-items: center;
-}
-
-.modal-content {
-    background-color: #fff;
-    border-radius: 8px;
-    padding: 20px;
-    width: 80%;
-    max-width: 600px;
-    text-align: left;
-    position: relative;
-}
-
-.close-button {
-    font-size: 24px;
-    font-weight: bold;
-    cursor: pointer;
-    position: absolute;
-    top: 10px;
-    right: 15px;
-    color: #333;
-}
-
-.arrow-button {
-    position: absolute;
-    top: 50%;
-    font-size: 24px;
-    background: none;
-    border: none;
-    cursor: pointer;
-    color: #555;
-    padding: 0 15px;
-    transform: translateY(-50%);
-}
-
-.arrow-button.left {
-    left: 0;
-}
-
-.arrow-button.right {
-    right: 0;
+    .arrow-button {
+        display: block; /* Hiển thị nút điều hướng trên màn hình lớn */
+    }
 }
