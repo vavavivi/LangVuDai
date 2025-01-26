@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Giới thiệu Làng Vũ Đại</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <h1>Giới Thiệu Làng Vũ Đại</h1>
+        <p>Các nhân vật nổi bật trong tác phẩm của Nam Cao.</p>
+    </header>
+
+    <section class="character-slider">
+        <!-- Nút mũi tên bên trái -->
+        <button class="arrow-button left" onclick="slide(-1)">&#10094;</button>
+
+        <div class="slider-container">
+            <!-- Card for Chí Phèo -->
+            <div class="card" onclick="showDetails('chiPheo')">
+                <img src="images/chi-pheo.webp" alt="Chí Phèo">
+                <h2>Chí Phèo</h2>
+                <p>Người nông dân lương thiện bị tha hóa.</p>
+            </div>
+
+            <!-- Card for Thị Nở -->
+            <div class="card" onclick="showDetails('thiNo')">
+                <img src="images/thi-no.webp" alt="Thị Nở">
+                <h2>Thị Nở</h2>
+                <p>Người phụ nữ yêu Chí Phèo, biểu tượng của tình yêu giản dị.</p>
+            </div>
+			
+            <!-- Card for Lão Hạc -->
+            <div class="card" onclick="showDetails('laoHac')">
+                <img src="images/LaoHac.webp" alt="Lão Hạc">
+                <h2>Lão Hạc</h2>
+                <p>Người nông dân khốn khổ nhưng giàu lòng tự trọng.</p>
+            </div>
+        </div>
+
+        <!-- Nút mũi tên bên phải -->
+        <button class="arrow-button right" onclick="slide(1)">&#10095;</button>
+    </section>
+
+    <!-- Character Details Modal -->
+    <div id="characterModal" class="modal">
+        <div class="modal-content">
+            <span class="close-button" onclick="closeModal()">&times;</span>
+            <div id="characterDetails">
+                <!-- Nội dung chi tiết của nhân vật sẽ được thêm vào đây bằng JavaScript -->
+            </div>
+        </div>
+    </div>
+
+    <!-- Import JavaScript -->
+    <script>
+		// Character data
+		const characters = {
+			chiPheo: {
+				name: "Chí Phèo",
+				description: "Chí Phèo là người nông dân lương thiện nhưng bị tha hóa bởi xã hội bất công, sống trong bi kịch và cô đơn.",
+				link: "chi-pheo.html"
+			},
+			thiNo: {
+				name: "Thị Nở",
+				description: "Thị Nở là người phụ nữ xấu xí, nhưng có tấm lòng chân thành, đã mang lại tia sáng hy vọng cho cuộc đời Chí Phèo.",
+				link: "thi-no.html"
+			},
+			laoHac: {
+				name: "Lão Hạc",
+				description: "Lão Hạc là người nông dân nghèo khó nhưng có lòng tự trọng cao, biểu tượng cho sự khốn cùng của người nông dân.",
+				link: "lao-hac.html"
+			}
+		};
+
+		let currentPosition = 0;
+
+		function slide(direction) {
+			const sliderContainer = document.querySelector(".slider-container");
+			const cardWidth = document.querySelector(".card").offsetWidth + 20;
+
+			currentPosition += direction * cardWidth;
+
+			const maxScroll = -(sliderContainer.scrollWidth - sliderContainer.parentElement.clientWidth);
+			if (currentPosition > 0) {
+				currentPosition = 0;
+			} else if (currentPosition < maxScroll) {
+				currentPosition = maxScroll;
+			}
+
+			sliderContainer.style.transform = `translateX(${currentPosition}px)`;
+		}
+
+		function showDetails(characterKey) {
+			const character = characters[characterKey];
+			if (character.link) {
+				window.location.href = character.link;
+			} else {
+				const modal = document.getElementById("characterModal");
+				const characterDetails = document.getElementById("characterDetails");
+
+				characterDetails.innerHTML = `<h2>${character.name}</h2><p>${character.description}</p>`;
+				modal.style.display = "flex";
+			}
+		}
+
+		function closeModal() {
+			document.getElementById("characterModal").style.display = "none";
+		}
+
+		window.onclick = function(event) {
+			const modal = document.getElementById("characterModal");
+			if (event.target === modal) {
+				closeModal();
+			}
+		}
+
+	</script>
+</body>
+</html>
