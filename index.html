@@ -7,67 +7,28 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <header>
-        <h1>Giới Thiệu Làng Vũ Đại</h1>
-        <p>Các nhân vật nổi bật trong tác phẩm của Nam Cao.</p>
-    </header>
-
+   
     <section class="character-slider">
        
         <div class="slider-container">
-            <!-- Card for Chí Phèo -->
-            <div class="card" onclick="showDetails('chiPheo')">
-                <img src="images/chi-pheo.webp" alt="Chí Phèo">
-                <h2>Chí Phèo</h2>
-                <p>Người nông dân lương thiện bị tha hóa.</p>
+            <div class="card" onclick="showDetails('thomasEdison')">
+                <img src="images/thomas-edison.webp" alt="Thomas Edison">
+                <h2>Thomas Edison</h2>
+                <p>Thomas Alva Edison (11 tháng 2 năm 1847 – 18 tháng 10 năm 1931) là một nhà phát minh và thương nhân đã phát triển rất nhiều thiết bị có ảnh hưởng lớn tới cuộc sống trong thế kỷ 20. Ông được một nhà báo đặt danh hiệu "Thầy phù thủy ở Menlo Park", ông là một trong những nhà phát minh đầu tiên ứng dụng các nguyên tắc sản xuất hàng loạt vào quy trình sáng tạo, và vì thế có thể coi là đã sáng tạo ra phòng nghiên cứu công nghiệp đầu tiên.</p>
             </div>
-
-            <!-- Card for Thị Nở -->
-            <div class="card" onclick="showDetails('thiNo')">
-                <img src="images/thi-no.webp" alt="Thị Nở">
-                <h2>Thị Nở</h2>
-                <p>Người phụ nữ yêu Chí Phèo, biểu tượng của tình yêu giản dị.</p>
-            </div>
-			
-            <!-- Card for Lão Hạc -->
-            <div class="card" onclick="showDetails('laoHac')">
-                <img src="images/LaoHac.webp" alt="Lão Hạc">
-                <h2>Lão Hạc</h2>
-                <p>Người nông dân khốn khổ nhưng giàu lòng tự trọng.</p>
-            </div>
-        </div>
+	</div>
 
    
     </section>
 
-    <!-- Character Details Modal -->
-    <div id="characterModal" class="modal">
-        <div class="modal-content">
-            <span class="close-button" onclick="closeModal()">&times;</span>
-            <div id="characterDetails">
-                <!-- Nội dung chi tiết của nhân vật sẽ được thêm vào đây bằng JavaScript -->
-            </div>
-        </div>
-    </div>
+
 
     <!-- Import JavaScript -->
     <script>
 		// Character data
 		const characters = {
-			chiPheo: {
-				name: "Chí Phèo",
-				description: "Chí Phèo là người nông dân lương thiện nhưng bị tha hóa bởi xã hội bất công, sống trong bi kịch và cô đơn.",
-				link: "chi-pheo.html"
-			},
-			thiNo: {
-				name: "Thị Nở",
-				description: "Thị Nở là người phụ nữ xấu xí, nhưng có tấm lòng chân thành, đã mang lại tia sáng hy vọng cho cuộc đời Chí Phèo.",
-				link: "thi-no.html"
-			},
-			laoHac: {
-				name: "Lão Hạc",
-				description: "Lão Hạc là người nông dân nghèo khó nhưng có lòng tự trọng cao, biểu tượng cho sự khốn cùng của người nông dân.",
-				link: "lao-hac.html"
+			thomasEdison: {
+				link: "thomas-edison.html"
 			}
 		};
 
@@ -91,15 +52,7 @@
 
 		function showDetails(characterKey) {
 			const character = characters[characterKey];
-			if (character.link) {
-				window.location.href = character.link;
-			} else {
-				const modal = document.getElementById("characterModal");
-				const characterDetails = document.getElementById("characterDetails");
-
-				characterDetails.innerHTML = `<h2>${character.name}</h2><p>${character.description}</p>`;
-				modal.style.display = "flex";
-			}
+			window.location.href = character.link;
 		}
 
 		function closeModal() {
