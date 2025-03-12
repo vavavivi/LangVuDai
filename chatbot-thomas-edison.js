@@ -68,7 +68,7 @@ async function fetchFptTts(text) {
         headers: {
             "api-key": "Ej3GUuXgnQrDaQMhrRvPoEjBne04SoqO",          // Replace with your FPT API key
             "speed": "0",                        // Adjust speed if needed
-            "voice": "banmai"                    // Select the desired voice (e.g., "leminh")
+            "voice": "leminh"                      // Select the desired voice (e.g., "leminh")
         },
         body: text
     });
